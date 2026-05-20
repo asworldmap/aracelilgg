@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Star, Wifi, ChevronDown, ChevronUp, Truck, RotateCcw, Shield } from 'lucide-react';
 import { useCartStore } from '@/lib/cart';
 import { formatPrice, cn } from '@/lib/utils';
@@ -119,7 +119,8 @@ export function ProductInfo({ product }: { product: Product }) {
       {/* Variant selector */}
       <div className="mb-8">
         <p className="text-xs tracking-[0.12em] uppercase font-light text-navy-500 mb-3">
-          Select variant: <span className="normal-case tracking-normal font-normal">{selectedVariant.name}</span>
+          Select variant:{' '}
+          <span className="normal-case tracking-normal font-normal">{selectedVariant.name}</span>
         </p>
         <div className="flex flex-wrap gap-2">
           {product.variants.map((v) => (
@@ -154,7 +155,7 @@ export function ProductInfo({ product }: { product: Product }) {
             onClick={() => setQty(Math.max(1, qty - 1))}
             className="px-4 py-3 text-navy-500 hover:bg-sand-100 transition-colors"
           >
-            −
+            &minus;
           </button>
           <span className="px-4 text-sm font-light text-navy-500">{qty}</span>
           <button
@@ -227,5 +228,3 @@ export function ProductInfo({ product }: { product: Product }) {
     </div>
   );
 }
-
-import { AnimatePresence } from 'framer-motion';
